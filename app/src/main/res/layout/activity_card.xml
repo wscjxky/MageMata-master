@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:text="原文"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:padding="10dp" />
+
+    <include layout="@layout/card_item">
+</include>
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:text="评论(0)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:padding="11dp"
+        android:id="@+id/card_tv_count" />
+    <ListView
+        android:divider="#00000000"
+        android:dividerHeight="6dp"
+        android:id="@+id/card_lv_comment"
+        android:layout_width="match_parent"
+        android:layout_height="251dp"
+        android:layout_weight="0.98">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:id="@+id/card_et_comment"
+            android:layout_height="match_parent"
+            android:layout_weight="1.05" />
+
+        <Button
+            android:text="提交"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:id="@+id/card_bt_comment" />
+    </LinearLayout >
+
+</LinearLayout>
+    </ScrollView>

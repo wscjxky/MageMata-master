@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 信息输入框 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="20.0dip"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="5.0dip"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:text="圈子名称:"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <EditText
+                android:id="@+id/addcircle_ciclename"
+                android:hint="汉字的任意组合"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <Button
+                android:id="@+id/registButtonCheckUserName"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="@color/border_clo"
+            />
+
+        <LinearLayout
+            android:layout_marginLeft="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:text="圈主姓名:"
+                android:layout_width="wrap_content" />
+
+            <EditText
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/addcircle_username"
+                android:hint="字数"
+                />
+
+            <Button
+                android:id="@+id/registButtonCheckPassword"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="联系方式:" />
+
+            <EditText
+
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/addcircle_phone"
+                android:hint="QQ" />
+
+            <Button
+                android:id="@+id/registButtonCheckEmail"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="性    别:" />
+
+            <RadioGroup
+                android:id="@+id/registInputSex"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="15.0dip"
+                android:background="@android:color/white"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/reg_boy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="帅男"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+
+                <RadioButton
+                    android:id="@+id/reg_girl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60.0dip"
+                    android:checked="false"
+                    android:text="美女"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+
+            <TextView
+            android:text="是否同意圈子创立协议"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:id="@+id/textView4" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox" />
+        </LinearLayout>
+
+
+        <!-- 注册按钮 -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+   >
+
+    <TextView
+        android:text="添加图片"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:id="@+id/addcircle_addimg"
+        android:layout_marginLeft="40dp"
+        android:contentDescription="@null"
+        android:clickable="true"/>
+</LinearLayout>
+        <Button
+            android:id="@+id/addcircle_submit"
+            android:background="@color/banana"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30.0dip"
+            android:layout_marginRight="30.0dip"
+            android:layout_marginTop="20.0dip"
+            android:text="注      册"
+            />
+
+        <View
+            android:id="@+id/registViewLoading"
+            android:layout_width="120.0dip"
+            android:layout_height="120.0dip"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</LinearLayout>

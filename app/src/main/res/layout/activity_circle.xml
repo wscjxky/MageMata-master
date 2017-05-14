@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/photo"
+        android:id="@+id/card_img" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:id="@+id/cards_lv"
+        android:layout_below="@+id/card_img"
+        android:divider="#00000000"
+        android:dividerHeight="9dp">
+
+</ListView>
+
+    <ImageButton
+        android:background="@drawable/btn_add"
+        android:id="@+id/card_add"
+        android:layout_marginRight="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@null"
+        />
+
+</RelativeLayout>

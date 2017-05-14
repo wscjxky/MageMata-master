@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:layout_width="50dp"
+        android:id="@+id/circles_iv"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="人数：10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/circles_count"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:textSize="10sp"
+        android:layout_alignTop="@+id/publish_iv_join"
+        android:layout_toRightOf="@+id/card_user"
+        android:layout_toEndOf="@+id/card_user" />
+
+    <TextView
+        android:text="作业帮"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_user"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_alignBottom="@+id/circles_count"
+        android:layout_toRightOf="@+id/circles_iv"
+        android:layout_toEndOf="@+id/circles_iv" />
+
+    <TextView
+        android:text="作业帮"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/circles_content"
+        android:fontFamily="sans-serif"
+        android:layout_alignBottom="@+id/circles_iv"
+        android:layout_alignLeft="@+id/card_user"
+        android:layout_alignStart="@+id/card_user"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+    />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:id="@+id/publish_iv_join"
+        android:layout_alignBottom="@+id/circles_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

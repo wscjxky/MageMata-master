@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.administrator.magemata">
+    <uses-sdk tools:overrideLibrary="com.stfalcon.chatkit,com.example.zhouwei.library"/>
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application
+        android:name=".AppData"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher1"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <receiver android:name=".BroadCast.AddUserBroad" >
+            <intent-filter>
+                <action android:name="MyAddBroadCast"/>
+            </intent-filter>
+        </receiver>
+        <!--<service android:name="com.example.LeakUploadService" />-->
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LaunchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MychatActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CardActivity"
+        android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddCardActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.LostActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.base.InfoBase"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.base.AddItemBase"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.UsedActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.PrintActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.publishes.JoinGoodActivity"
+            android:screenOrientation="portrait"/>
+
+
+    </application>
+
+</manifest>

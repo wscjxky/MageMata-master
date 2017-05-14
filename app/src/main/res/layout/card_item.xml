@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/wrap_layout"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+        <TextView
+            android:text="第一个用户"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_user"
+            android:layout_weight="1" />
+
+        <TextView style="@style/usertext"
+            android:text="我去问哪里出了山河谷哪里有卖，万能的东西，如果女票有点时候会想到"
+            android:id="@+id/card_content"
+            android:padding="8dp" />
+
+        <TextView
+            android:text="2017-04-30 12:00:23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_time"
+            android:layout_weight="1"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp" />
+
+    </LinearLayout>
+
