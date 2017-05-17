@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,11 +19,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.publishes.LostActivity;
 import com.example.administrator.magemata.activity.publishes.UsedActivity;
 import com.example.administrator.magemata.constant.Constant;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +44,10 @@ public class PublishBase extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+            Log.e("注册成功","abc");
+        }
     }
 
     public  SimpleAdapter initAdapter(Context context){
@@ -95,8 +103,7 @@ public class PublishBase extends AppCompatActivity{
         // TODO Auto-generated method stub
         switch (item.getItemId()){
             case 0:
-                Intent intent = new Intent(this,AddItemBase.class);
-                startActivityForResult(intent, 100);
+                AddItemBase.actionStart(this);
                 break;
         }
 
@@ -106,5 +113,11 @@ public class PublishBase extends AppCompatActivity{
 
     public  List<Map<String, Object>> getListems(){
         return listems;
+    }
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        Log.e("stop,","asd");
+        super.onDestroy();
     }
 }

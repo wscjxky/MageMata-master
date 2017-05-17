@@ -1,5 +1,6 @@
 package com.example.administrator.magemata.activity.publishes.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +36,6 @@ public class AddItemBase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addfound);
 
-        Log.e("ok","sdf");
         addfound_iv_addimg=(ImageView)findViewById(R.id.addfound_iv_addimg) ;
         addfound_et_content=(EditText)findViewById(R.id.addfound_et_content) ;
         addfound_et_name=(EditText)findViewById(R.id.addfound_et_name) ;
@@ -60,14 +63,13 @@ public class AddItemBase extends AppCompatActivity {
     public void submit(){
         String content = addfound_et_content.getText().toString();
         String username = addfound_et_name.getText().toString();
-        Intent intent = new Intent();
-        intent.putExtra("content", content);
-        intent.putExtra("title", username);
         addfound_iv_addimg.setDrawingCacheEnabled(true);
         Bitmap logo = Bitmap.createBitmap(addfound_iv_addimg.getDrawingCache());
-        intent.putExtra("logo", logo);
         addfound_iv_addimg.setDrawingCacheEnabled(false);
-        setResult(101, intent);
+        ImageMessage imageMessage=new ImageMessage();
+        imageMessage.setTitle(username);imageMessage.setContent(content);imageMessage.setBitmap(logo);
+        EventBus.getDefault().post(imageMessage);
+
         this.finish();
     }
     @Override
@@ -107,5 +109,11 @@ public class AddItemBase extends AppCompatActivity {
         intent.putExtra("return-data", true);
         // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
         startActivityForResult(intent, 300);
+    }
+
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, AddItemBase.class);
+        context.startActivity(intent);
     }
 }

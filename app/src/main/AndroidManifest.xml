@@ -17,13 +17,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name=".BroadCast.AddUserBroad" >
-            <intent-filter>
-                <action android:name="MyAddBroadCast"/>
-            </intent-filter>
-        </receiver>
         <!--<service android:name="com.example.LeakUploadService" />-->
         <activity android:name=".activity.MainActivity"
+            android:configChanges="uiMode|orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,6 +51,8 @@
         <activity android:name=".activity.publishes.PrintActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.publishes.JoinGoodActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MoreDetail"
             android:screenOrientation="portrait"/>
 
 

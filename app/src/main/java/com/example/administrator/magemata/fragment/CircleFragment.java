@@ -125,9 +125,5 @@ public class CircleFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onPause() {
-        Log.e("Circlefrag","Pause");
-        super.onPause();
-    }
+
 }

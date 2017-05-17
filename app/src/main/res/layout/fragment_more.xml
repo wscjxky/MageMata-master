@@ -43,6 +43,17 @@
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
         <View style="@style/bg_line"/>
+        <LinearLayout style="@style/mid_layout"
+            android:id="@+id/more_linel_changeskin"
+            android:clickable="true"
+           >
+            <TextView style="@style/usertext"
+                android:text="更换皮肤"
+
+                />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
         <!-- 下圆角-->
         <LinearLayout style="@style/bottom_layout">
             <TextView style="@style/usertext" android:text="常用信息"

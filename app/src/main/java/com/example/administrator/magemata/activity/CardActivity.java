@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.administrator.magemata.R;
+import com.example.administrator.magemata.activity.publishes.base.AddItemBase;
+import com.example.administrator.magemata.fragment.MychatFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,8 +69,26 @@ public class CardActivity  extends AppCompatActivity {
                 new int[]{R.id.card_user, R.id.card_content, R.id.card_time});
         commentlv.setAdapter(simplead);
     }
+
     static public void actionStart(Context context){
         Intent intent=new Intent(context,CardActivity.class);
         context.startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.circle_menu, menu);
+        menu.add("联系发布者");
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        switch (item.getItemId()){
+            case 0:
+                MychatFragment.ADDUSER=true;
+                MychatActivity.actionStart(CardActivity.this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

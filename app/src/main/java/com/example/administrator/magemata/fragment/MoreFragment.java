@@ -8,10 +8,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.administrator.magemata.Events.FlatMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.util.Permission;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,14 +36,13 @@ public class MoreFragment extends Fragment {
         View mview = inflater.inflate(R.layout.fragment_more, container, false);
         this.activity = getActivity();
         ButterKnife.bind(this,mview);
+        setListener(mview);
         return mview;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
     }
 
     @OnClick(R.id.more_userview)
@@ -57,8 +60,18 @@ public class MoreFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         Log.e("ASd", "setUserVisibleHint " + isVisibleToUser);
-        if (isVisibleToUser) {
-        } else {
-        }
+
+    }
+
+    private  void setListener(View mview){
+        LinearLayout linearLayout=(LinearLayout)mview.findViewById(R.id.more_linel_changeskin);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EventBus.getDefault().post(new FlatMessage("changeskin"));
+
+            }
+        });
     }
 }

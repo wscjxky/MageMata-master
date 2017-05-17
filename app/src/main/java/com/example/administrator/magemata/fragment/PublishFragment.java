@@ -3,15 +3,19 @@ package com.example.administrator.magemata.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.publishes.JoinGoodActivity;
 import com.example.administrator.magemata.activity.publishes.LostActivity;
 import com.example.administrator.magemata.activity.publishes.PrintActivity;
 import com.example.administrator.magemata.activity.publishes.UsedActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,23 +26,14 @@ import butterknife.OnClick;
 
 public class PublishFragment extends Fragment {
     private Activity activity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mview = inflater.inflate(R.layout.fragment_publish, container, false);
-        this.activity=getActivity();
+        activity=getActivity();
         ButterKnife.bind(this,mview);
-
+        setListener(mview);
         return mview;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
-    @OnClick(R.id.publish_iv_lost)
-    public void lost(){
-        LostActivity.actionStart(activity);
     }
 
     private  void setListener(View mview){
@@ -67,4 +62,5 @@ public class PublishFragment extends Fragment {
             }
         });
     }
+
 }
