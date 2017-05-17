@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 信息输入框 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="20.0dip"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="性  别:" />
+
+            <RadioGroup
+                android:id="@+id/registInputSex"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="15.0dip"
+                android:background="@android:color/white"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/reg_boy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="男生"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+
+                <RadioButton
+                    android:id="@+id/reg_girl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60.0dip"
+                    android:checked="false"
+                    android:text="女生"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="标  签:" />
+
+            <RadioGroup
+                android:id="@+id/registInputSe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10.0dip"
+                android:gravity="center"
+                android:background="@android:color/white"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/reg_schoolf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+
+                    android:text="校友"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+
+                <RadioButton
+                    android:id="@+id/reg_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="老师"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="40dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+                <RadioButton
+                    android:id="@+id/reg_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="学生"
+                    android:textColor="@android:color/black"
+                    android:textSize="18.0sp" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="姓  名:  " />
+
+            <EditText
+
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/addcircle_phone"
+                 />
+
+            <Button
+                android:id="@+id/registButtonCheckEmail"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:text="介绍下自己"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:orientation="horizontal" >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:text="设置app皮肤"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                 />
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:id="@+id/moredetail_rbut_skin"
+                android:text="改皮肤" />
+        </LinearLayout>
+
+        <!-- 注册按钮 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            >
+
+            <TextView
+                android:text="设置头像"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:drawable/ic_menu_add"
+                android:id="@+id/moredetail_cv_addimg"
+                android:layout_marginLeft="40dp"
+                android:contentDescription="@null"
+                android:clickable="true"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/addcircle_submit"
+            android:background="@color/banana"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30.0dip"
+            android:layout_marginRight="30.0dip"
+            android:layout_marginTop="20.0dip"
+            android:text="注      册"
+            />
+    </LinearLayout>
+
+</LinearLayout>
