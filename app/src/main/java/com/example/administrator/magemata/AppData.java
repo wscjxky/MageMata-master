@@ -15,10 +15,6 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class AppData extends Application{
-    static {
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
-    }
 
 
 }

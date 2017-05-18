@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.administrator.magemata.Events.FlatMessage;
 import com.example.administrator.magemata.R;
+import com.example.administrator.magemata.activity.ChangeSkinActivity;
 import com.example.administrator.magemata.util.Permission;
 
 import org.greenrobot.eventbus.EventBus;
@@ -69,7 +70,7 @@ public class MoreFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EventBus.getDefault().post(new FlatMessage("changeskin"));
+                ChangeSkinActivity.actionStart(activity);
 
             }
         });

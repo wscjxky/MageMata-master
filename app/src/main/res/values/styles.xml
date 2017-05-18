@@ -105,4 +105,54 @@
         <item name="android:layout_height">1px</item>
         <item name="android:background">@color/border_clo</item>
     </style>
+
+    <!-- 换肤. -->
+    <style
+        name="Theme.color1"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color1</item>
+    </style>
+
+    <style
+        name="Theme.color2"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color2</item>
+    </style>
+
+    <style
+        name="Theme.color3"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color3</item>
+    </style>
+
+    <style
+        name="Theme.color4"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color4</item>
+    </style>
+
+    <style
+        name="Theme.color5"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color5</item>
+    </style>
+
+    <style
+        name="Theme.color6"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color6</item>
+    </style>
+
+    <style
+        name="Theme.color7"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color7</item>
+    </style>
+
+    <style
+        name="Theme.color8"
+        parent="android:Theme">
+        <item name="android:background">@drawable/color8</item>
+    </style>
+
 </resources>

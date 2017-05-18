@@ -21,6 +21,7 @@ import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.R2;
 import com.example.administrator.magemata.adapter.MainAdapter;
+import com.example.administrator.magemata.adapter.SkinSettingManager;
 import com.example.administrator.magemata.constant.Constant;
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
@@ -32,19 +33,25 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import xyz.geminiwen.skinsprite.app.SkinnableActivity;
 
 /**
  * Created by Administrator on 2017/4/24.
  */
 
-public class MainActivity extends SkinnableActivity {
+public class MainActivity extends AppCompatActivity {
     @BindView(R2.id.tabs)
     AdvancedPagerSlidingTabStrip tabs;
     @BindView(R2.id.viewpager)
     ViewPager pager;
     private PagerAdapter adapter;
-
+    private SkinSettingManager mSettingManager;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Resume","pk");
+        mSettingManager = new SkinSettingManager(this);
+        mSettingManager.initSkins();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,18 +77,7 @@ public class MainActivity extends SkinnableActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public  void changeskin(FlatMessage event){
         Log.e("接受","s");
-        int currentNightMode = getResources().getConfiguration().uiMode
-                & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO: {
-                setDayNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-            }
-            case Configuration.UI_MODE_NIGHT_YES:{
-                setDayNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            }
-        }
+
     }
     @Override
     public void onDestroy() {

@@ -49,5 +49,4 @@ dependencies {
     compile 'com.github.stfalcon:chatkit:0.2.0'
     compile 'jp.wasabeef:recyclerview-animators:2.2.6'
     compile 'com.github.pinguo-zhouwei:CustomPopwindow:2.0.0'
-    compile project(':skinsprite')
 }
