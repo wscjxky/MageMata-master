@@ -14,4 +14,7 @@ public class Constant {
     static public String TIME="2017-04-30 12:00:23";
     static public int LOGO= R.drawable.__leak_canary_icon;
 
+    static public String LOST_TITLE="校园卡";
+    static public String LOST_CONTENT="在某某丢失了校园卡很着急，请联系";
+
 }

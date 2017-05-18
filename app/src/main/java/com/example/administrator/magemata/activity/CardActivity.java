@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.publishes.base.AddItemBase;
+import com.example.administrator.magemata.adapter.SkinSettingManager;
 import com.example.administrator.magemata.fragment.MychatFragment;
 
 import java.util.ArrayList;
@@ -90,5 +91,12 @@ public class CardActivity  extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Resume","pk");
+        SkinSettingManager mSettingManager = new SkinSettingManager(this);
+        mSettingManager.initSkins();
     }
 }

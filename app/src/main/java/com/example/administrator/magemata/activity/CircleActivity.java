@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 
 import com.example.administrator.magemata.R;
+import com.example.administrator.magemata.adapter.SkinSettingManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -136,4 +138,11 @@ public class CircleActivity extends AppCompatActivity {
             Intent intent=new Intent(context,CircleActivity.class);
             context.startActivity(intent);
         }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Resume","pk");
+        SkinSettingManager mSettingManager = new SkinSettingManager(this);
+        mSettingManager.initSkins();
+    }
 }

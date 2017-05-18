@@ -37,16 +37,16 @@ public class PublishFragment extends Fragment {
     }
 
     private  void setListener(View mview){
-        mview.findViewById(R.id.publish_iv_used).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UsedActivity.actionStart(activity);
-            }
-        });
         mview.findViewById(R.id.publish_iv_lost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LostActivity.actionStart(activity);
+            }
+        });
+        mview.findViewById(R.id.publish_iv_used).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsedActivity.actionStart(activity);
             }
         });
         mview.findViewById(R.id.publish_iv_join).setOnClickListener(new View.OnClickListener() {

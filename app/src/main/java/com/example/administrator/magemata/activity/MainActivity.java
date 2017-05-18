@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -63,10 +64,7 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
         tabs.showDot(2, "99+");
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-            Log.e("注册成功","abc");
-        }
+
 
     }
     public static void actionStart(Context context ){
@@ -74,15 +72,19 @@ public class MainActivity extends AppCompatActivity {
         context.startActivity(intent);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public  void changeskin(FlatMessage event){
-        Log.e("接受","s");
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.share_menu, menu);
+        return true;
     }
-    @Override
-    public void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        Log.e("stop,","asd");
-        super.onDestroy();
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                Intent intent1=new Intent(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_TEXT,"你好 分享成功 www.magemata.com\"");
+                intent1.setType("text/plain");
+                startActivity(Intent.createChooser(intent1,"share"));
+        }
+        return false;
     }
 }

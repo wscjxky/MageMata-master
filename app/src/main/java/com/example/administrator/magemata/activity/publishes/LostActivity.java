@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import com.example.administrator.magemata.activity.CircleActivity;
 import com.example.administrator.magemata.activity.LoginActivity;
 import com.example.administrator.magemata.activity.publishes.pubfragment.LostAdapter;
 import com.example.administrator.magemata.adapter.MainAdapter;
+import com.example.administrator.magemata.adapter.SkinSettingManager;
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
 import java.util.ArrayList;
@@ -72,5 +74,12 @@ public class LostActivity extends AppCompatActivity {
     public static void actionStart(Context context){
         Intent intent=new Intent(context,LostActivity.class);
         context.startActivity(intent);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Resume","pk");
+        SkinSettingManager mSettingManager = new SkinSettingManager(this);
+        mSettingManager.initSkins();
     }
 }

@@ -23,6 +23,7 @@ import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.publishes.LostActivity;
 import com.example.administrator.magemata.activity.publishes.UsedActivity;
+import com.example.administrator.magemata.adapter.SkinSettingManager;
 import com.example.administrator.magemata.constant.Constant;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 
@@ -77,12 +78,39 @@ public class PublishBase extends AppCompatActivity{
         });
         return simplead;
     }
+    public  SimpleAdapter initAdapter_print(Context context){
+        Map<String, Object> listem;
+        SimpleAdapter simplead;
+        listems = new ArrayList<Map<String, Object>>();
+        listem = new HashMap<String, Object>();
+        listem.put("logo",Constant.LOGO);
+        listem.put("title", "打印信息");
+        listem.put("content","彩印，文件名");
+        listem.put("time",Constant.TIME);
+        listems.add(listem);
+        simplead = new SimpleAdapter(context, listems,
+                R.layout.imgitem_base, new String[]{"logo","title", "content", "time"},
+                new int[]{R.id.base_iv_logo, R.id.base_tv_title, R.id.base_tv_content,R.id.base_tv_time});
+        simplead.setViewBinder(new SimpleAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Object data,
+                                        String textRepresentation) {
+                if(view instanceof ImageView && data instanceof Bitmap){
+                    ImageView i = (ImageView)view;
+                    i.setImageBitmap((Bitmap) data);
+                    return true;
+                }
+                return false;
+            }
+        });
+        return simplead;
+    }
 
     public void setListener(final Context context, ListView listView) {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                InfoBase.actionStart(context);
+                InfoBase.actionStart(context,Constant.TITLE,Constant.CONTENT);
             }
         });
     }
@@ -103,7 +131,7 @@ public class PublishBase extends AppCompatActivity{
         // TODO Auto-generated method stub
         switch (item.getItemId()){
             case 0:
-                AddItemBase.actionStart(this);
+                AddItemBase.actionStart(this,"lost");
                 break;
         }
 
@@ -119,5 +147,12 @@ public class PublishBase extends AppCompatActivity{
         EventBus.getDefault().unregister(this);
         Log.e("stop,","asd");
         super.onDestroy();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Resume","pk");
+        SkinSettingManager mSettingManager = new SkinSettingManager(this);
+        mSettingManager.initSkins();
     }
 }

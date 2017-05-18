@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.SimpleAdapter;
 
 import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
+import com.example.administrator.magemata.activity.publishes.base.AddItemBase;
 import com.example.administrator.magemata.activity.publishes.base.InfoBase;
 import com.example.administrator.magemata.activity.publishes.base.PublishBase;
 import com.example.administrator.magemata.constant.Constant;
@@ -70,4 +72,14 @@ public class  UsedActivity extends PublishBase {
         context.startActivity(intent);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        switch (item.getItemId()){
+            case 0:
+                AddItemBase.actionStart(this,"usedgood");
+                break;
+        }
+        return true;
+    }
 }

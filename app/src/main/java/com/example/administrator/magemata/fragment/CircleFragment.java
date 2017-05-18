@@ -57,7 +57,6 @@ public class CircleFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         setAdapter();
         setListView();
     }
