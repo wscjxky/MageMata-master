@@ -39,7 +39,7 @@ import static com.example.administrator.magemata.fragment.MychatFragment.OTHER;
 import static com.example.administrator.magemata.fragment.MychatFragment.RECEIVER;
 import static com.example.administrator.magemata.fragment.MychatFragment.SENDER;
 
-public class MychatActivity extends AppCompatActivity implements MessageInput.InputListener  ,MessageInput.AttachmentsListener{
+public class MychatActivity extends BaseActivity implements MessageInput.InputListener  ,MessageInput.AttachmentsListener{
 
     protected MessagesListAdapter<Message> messagesAdapter;
     @BindView(R.id.mychat_messagesList)

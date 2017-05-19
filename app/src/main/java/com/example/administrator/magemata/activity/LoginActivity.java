@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/24.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     @BindView(R.id.login_tv_info)
     EditText editText;
     @BindView(R.id.login_but_submit)

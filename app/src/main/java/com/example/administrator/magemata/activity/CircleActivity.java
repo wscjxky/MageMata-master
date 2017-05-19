@@ -33,7 +33,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/29.
  */
 
-public class CircleActivity extends AppCompatActivity {
+public class CircleActivity extends BaseActivity {
     public static final int CARD_REQ = 100;
     public static final int CARD_RESULT=101;
     private List<Map<String, Object>> listems;
@@ -130,7 +130,9 @@ public class CircleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CircleActivity.this,AddCardActivity.class);
-                startActivityForResult(intent, CARD_REQ);            }
+                startActivityForResult(intent, CARD_REQ);
+                window.dismiss();
+            }
         });
     }
 
@@ -138,11 +140,5 @@ public class CircleActivity extends AppCompatActivity {
             Intent intent=new Intent(context,CircleActivity.class);
             context.startActivity(intent);
         }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("Resume","pk");
-        SkinSettingManager mSettingManager = new SkinSettingManager(this);
-        mSettingManager.initSkins();
-    }
+
 }

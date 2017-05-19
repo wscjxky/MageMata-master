@@ -1,7 +1,7 @@
 package com.example.administrator.magemata.fragment;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,19 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.example.administrator.magemata.Events.FlatMessage;
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
-import com.example.administrator.magemata.activity.ChangeSkinActivity;
-import com.example.administrator.magemata.util.Permission;
+import com.example.administrator.magemata.activity.more.ChangeSkinActivity;
+import com.example.administrator.magemata.activity.more.MoreDetailActivity;
+import com.example.administrator.magemata.activity.more.OtherActivity;
+import com.example.administrator.magemata.activity.more.WalletActivity;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -30,33 +29,28 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MoreFragment extends Fragment {
     private Activity activity;
-    @BindView(R.id.more_userview)
-    CircleImageView imageView;
+    private CircleImageView imageView;
+    private LinearLayout linearLayout;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mview = inflater.inflate(R.layout.fragment_more, container, false);
         this.activity = getActivity();
-        ButterKnife.bind(this,mview);
         setListener(mview);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+            Log.e("注册成功","abc");
+        }
         return mview;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
     }
 
-    @OnClick(R.id.more_userview)
-    public void changePortrait(){
-        new Permission(activity);
-        Intent intent = new Intent();
-                /* 开启Pictures画面Type设定为image */
-        intent.setType("image/*");
-                /* 使用Intent.ACTION_GET_CONTENT这个Action */
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-                /* 取得相片后返回本画面 */
-        startActivityForResult(intent, 1);
-    }
+
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -65,14 +59,45 @@ public class MoreFragment extends Fragment {
     }
 
     private  void setListener(View mview){
-        LinearLayout linearLayout=(LinearLayout)mview.findViewById(R.id.more_linel_changeskin);
+        imageView = (CircleImageView) mview.findViewById(R.id.more_userview);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoreDetailActivity.actionStart(activity);
+            }
+        });
+
+       linearLayout=(LinearLayout)mview.findViewById(R.id.more_linel_changeskin);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ChangeSkinActivity.actionStart(activity);
-
+            }
+        });
+        mview.findViewById(R.id.more_linel_otherinfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OtherActivity.actionStart(activity);
+            }
+        });
+        mview.findViewById(R.id.more_linel_mywallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WalletActivity.actionStart(activity);
             }
         });
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+            EventBus.getDefault().unregister(this);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ImageMessage event) {
+        Bitmap logo = event.getBitmp();
+        imageView.setImageBitmap(logo);
+    };
+
+
 }

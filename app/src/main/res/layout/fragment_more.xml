@@ -28,8 +28,10 @@
         android:layout_below="@+id/more_userview"
         android:layout_centerHorizontal="true">
         <!-- 上圆角-->
-        <LinearLayout style="@style/top_layout">
-            <TextView style="@style/usertext" android:text="钱包"
+        <LinearLayout style="@style/top_layout"
+            android:id="@+id/more_linel_mywallet">
+            <TextView style="@style/usertext"
+                android:text="钱包"
                 android:id="@+id/more_wallet" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
@@ -57,7 +59,7 @@
         <!-- 下圆角-->
         <LinearLayout style="@style/bottom_layout">
             <TextView style="@style/usertext" android:text="常用信息"
-                android:id="@+id/more_info" />
+                android:id="@+id/more_linel_otherinfo" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+        <LinearLayout style="@style/top_layout"
+            android:id="@+id/other_linel_submway">
+            <TextView style="@style/usertext"
+                android:text="北京地铁图" />
+        </LinearLayout>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+            <TextView style="@style/usertext"
+                android:text="高校各办公室" />
+        </LinearLayout>
+    <LinearLayout style="@style/bottom_layout">
+        <TextView style="@style/usertext"
+            android:text="校历" />
+    </LinearLayout>
+    </LinearLayout>

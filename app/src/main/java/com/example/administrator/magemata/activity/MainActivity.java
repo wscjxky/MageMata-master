@@ -39,20 +39,13 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/24.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @BindView(R2.id.tabs)
     AdvancedPagerSlidingTabStrip tabs;
     @BindView(R2.id.viewpager)
     ViewPager pager;
     private PagerAdapter adapter;
-    private SkinSettingManager mSettingManager;
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("Resume","pk");
-        mSettingManager = new SkinSettingManager(this);
-        mSettingManager.initSkins();
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

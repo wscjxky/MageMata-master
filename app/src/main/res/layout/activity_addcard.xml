@@ -43,7 +43,8 @@
             android:layout_width="wrap_content" />
 
         <EditText
-            android:id="@+id/addcard_coin"
+            android:id="@+id/addcard_et_coin"
+            android:inputType="number"
             android:layout_marginLeft="20dp"
             android:hint="0-9"
             android:layout_height="wrap_content"

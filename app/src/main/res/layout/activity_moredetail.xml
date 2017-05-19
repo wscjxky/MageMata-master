@@ -41,6 +41,7 @@
                     android:id="@+id/reg_boy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30.0dip"
                     android:checked="true"
                     android:text="男生"
                     android:textColor="@android:color/black"
@@ -82,7 +83,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-
                     android:text="校友"
                     android:textColor="@android:color/black"
                     android:textSize="18.0sp" />
@@ -93,8 +93,8 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="老师"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
                     android:textColor="@android:color/black"
                     android:textSize="18.0sp" />
                 <RadioButton
@@ -171,7 +171,7 @@
             <Button
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
-                android:id="@+id/moredetail_rbut_skin"
+                android:id="@+id/moredetail_but_skin"
                 android:text="改皮肤" />
         </LinearLayout>
 
@@ -199,14 +199,14 @@
                 android:clickable="true"/>
         </LinearLayout>
         <Button
-            android:id="@+id/addcircle_submit"
+            android:id="@+id/moredetail_but_submit"
             android:background="@color/banana"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30.0dip"
             android:layout_marginRight="30.0dip"
             android:layout_marginTop="20.0dip"
-            android:text="注      册"
+            android:text="提   交"
             />
     </LinearLayout>
 

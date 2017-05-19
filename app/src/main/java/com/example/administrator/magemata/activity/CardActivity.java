@@ -31,7 +31,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/30.
  */
 
-public class CardActivity  extends AppCompatActivity {
+public class CardActivity  extends BaseActivity {
     private static  int COMCOUNT = 0;
     @BindView(R.id.card_et_comment)
     EditText comment;

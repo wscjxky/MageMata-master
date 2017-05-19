@@ -25,7 +25,7 @@ import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LaunchActivity extends AppCompatActivity implements OnMenuItemClickListener {
+public class LaunchActivity extends BaseActivity implements OnMenuItemClickListener {
     @BindView(R.id.launch_btn_login)
     Button btn_login;
     private ContextMenuDialogFragment mMenuDialogFragment;

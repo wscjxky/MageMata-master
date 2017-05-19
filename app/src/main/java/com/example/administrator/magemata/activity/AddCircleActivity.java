@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/27.
  */
 
-public class AddCircleActivity extends AppCompatActivity{
+public class AddCircleActivity extends BaseActivity{
     private static final int PHOTO_REQUEST_GALLERY = 100 ;
     private static final int PHOTO_REQUEST_CUT = 200 ;
     private Activity activity;

@@ -52,9 +52,15 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.publishes.JoinGoodActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MoreDetail"
+        <activity android:name=".activity.more.MoreDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ChangeSkinActivity"
+        <activity android:name=".activity.more.ChangeSkinActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BaseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.more.WalletActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.more.OtherActivity"
             android:screenOrientation="portrait"/>
 
 
