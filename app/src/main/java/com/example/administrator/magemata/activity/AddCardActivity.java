@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,6 +23,8 @@ import com.example.administrator.magemata.activity.more.WalletActivity;
 import com.example.administrator.magemata.fragment.CircleFragment;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +42,7 @@ public class AddCardActivity extends AppCompatActivity {
     EditText addcard_coin;
     Button submit;
     static public void actionStart(Context context){
-        Intent intent=new Intent(context,AddCircleActivity.class);
+        Intent intent=new Intent(context,AddCardActivity.class);
         context.startActivity(intent);
     }
     @Override
@@ -60,9 +64,24 @@ public class AddCardActivity extends AppCompatActivity {
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                submit();
+                if(Objects.equals(addcard_coin.getText().toString(), "")) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(AddCardActivity.this);
+                    dialog.setTitle("注意");
+                    dialog.setMessage("金币不能为空哦");
+                    dialog.setCancelable(false);
+                    dialog.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                }
+                else
+                    submit();
             }
         });
     }
@@ -88,8 +107,9 @@ public class AddCardActivity extends AppCompatActivity {
 //        setResult(CircleFragment.CIRCLE_RESULT, intent);
         ImageMessage imageMessage=new ImageMessage();
         imageMessage.setTitle(user);imageMessage.setContent(content);imageMessage.setBitmap(bitmap);
-        EventBus.getDefault().post(imageMessage);
+        Log.e("sadf","Sdf");
         showmDialog();
+        EventBus.getDefault().post(imageMessage);
     }
 
     private void showmDialog() {

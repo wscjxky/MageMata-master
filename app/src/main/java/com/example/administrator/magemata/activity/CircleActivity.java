@@ -94,7 +94,6 @@ public class CircleActivity extends BaseActivity {
                 new int[]{R.id.card_user, R.id.card_content, R.id.card_time});
         cards_lv.setAdapter(simplead);
 
-
     }
     private void setListener() {
         cards_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -156,6 +155,7 @@ public class CircleActivity extends BaseActivity {
 //                Intent intent = new Intent(CircleActivity.this,AddCardActivity.class);
 //                startActivityForResult(intent, CARD_REQ);
                 AddCardActivity.actionStart(CircleActivity.this);
+                    Log.e("sdf","Asdf");
                 window.dismiss();
             }
         });
