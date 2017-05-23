@@ -35,12 +35,12 @@ public class MainAdapter extends FragmentStatePagerAdapter implements AdvancedPa
     @Override
     public Fragment getItem(int position) {
         switch (position){
+            case  0:
+                return new CircleFragment();
             case  2:
                 return new MychatFragment();
             case  1:
                 return new PublishFragment();
-            case  0:
-                return new CircleFragment();
             case  3:
                 return new MoreFragment();
             default:

@@ -47,7 +47,6 @@ public class PublishBase extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
-            Log.e("注册成功","abc");
         }
     }
 
@@ -151,7 +150,6 @@ public class PublishBase extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("Resume","pk");
         SkinSettingManager mSettingManager = new SkinSettingManager(this);
         mSettingManager.initSkins();
     }

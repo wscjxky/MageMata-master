@@ -12,8 +12,12 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.administrator.magemata.Events.CircleMessage;
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.fragment.CircleFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,15 +59,19 @@ public class AddCircleActivity extends BaseActivity{
         String ciclename = et_ciclename.getText().toString();
         String phone = et_phone.getText().toString();
         String username = et_username.getText().toString();
-        Intent intent = new Intent();
-        intent.putExtra("ciclename", ciclename);
-        intent.putExtra("phone", phone);
-        intent.putExtra("username", username);
+//        Intent intent = new Intent();
+//        intent.putExtra("ciclename", ciclename);
+//        intent.putExtra("phone", phone);
+//        intent.putExtra("username", username);
         addimg.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(addimg.getDrawingCache());
-        intent.putExtra("bitmap", bitmap);
+//        intent.putExtra("bitmap", bitmap);
         addimg.setDrawingCacheEnabled(false);
-        setResult(CircleFragment.CIRCLE_RESULT, intent);
+        CircleMessage imageMessage=new CircleMessage();
+        imageMessage.setTitle(ciclename);imageMessage.setContent(username);imageMessage.setBitmap(bitmap);
+        EventBus.getDefault().post(imageMessage);
+//        setResult(CircleFragment.CIRCLE_RESULT, intent);
+
         this.finish();
     }
 
@@ -120,12 +128,5 @@ public class AddCircleActivity extends BaseActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onPause() {
-        Log.e("Addcircle","Pause");
-        if( !et_username.getText().toString().equals("")){
-            Intent intent = new Intent();
-            setResult(404,intent);}
-        super.onPause();
-    }
+
 }

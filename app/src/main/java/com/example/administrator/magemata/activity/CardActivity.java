@@ -95,7 +95,6 @@ public class CardActivity  extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("Resume","pk");
         SkinSettingManager mSettingManager = new SkinSettingManager(this);
         mSettingManager.initSkins();
     }

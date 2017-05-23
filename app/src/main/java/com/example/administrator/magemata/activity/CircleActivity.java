@@ -2,6 +2,7 @@ package com.example.administrator.magemata.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.adapter.SkinSettingManager;
+import com.example.administrator.magemata.constant.Constant;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +41,7 @@ import butterknife.OnClick;
  */
 
 public class CircleActivity extends BaseActivity {
-    public static final int CARD_REQ = 100;
-    public static final int CARD_RESULT=101;
+
     private List<Map<String, Object>> listems;
     private SimpleAdapter simplead;
     private Map<String, Object> listem;
@@ -50,9 +56,27 @@ public class CircleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle);
         ButterKnife.bind(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         setAdapter();
         setListener();
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ImageMessage event) {
+        String user = event.getTitle();
+        String content = event.getContent();
+//        Bitmap logo = event.getBitmp();
+        String time = Constant.TIME;
+        Map<String, Object> listem = new HashMap<String, Object>();
+        listem.put("user", user);
+        listem.put("content", content);
+        listem.put("time", "2017-04-30 12:00:23");
+
+        listems.add(listem);
+        simplead.notifyDataSetChanged();
+    }
+
 
     private void setAdapter() {
         String user="第一个用户";
@@ -81,23 +105,23 @@ public class CircleActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == CARD_REQ && resultCode==CARD_RESULT)
-        {
-            String user = data.getStringExtra("user");
-            String content = data.getStringExtra("content");
-            String time = data.getStringExtra("time");
-            Map<String, Object> listem = new HashMap<String, Object>();
-            listem.put("user", user);
-            listem.put("content", content);
-            listem.put("time", "2017-04-30 12:00:23");
-            listems.add(listem);
-            simplead.notifyDataSetChanged();
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data)
+//    {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == CARD_REQ && resultCode==CARD_RESULT)
+//        {
+//            String user = data.getStringExtra("user");
+//            String content = data.getStringExtra("content");
+//            String time = data.getStringExtra("time");
+//            Map<String, Object> listem = new HashMap<String, Object>();
+//            listem.put("user", user);
+//            listem.put("content", content);
+//            listem.put("time", "2017-04-30 12:00:23");
+//            listems.add(listem);
+//            simplead.notifyDataSetChanged();
+//        }
+//    }
 
     @OnClick(R.id.card_add)
     public void showPop(){
@@ -129,8 +153,9 @@ public class CircleActivity extends BaseActivity {
         addReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CircleActivity.this,AddCardActivity.class);
-                startActivityForResult(intent, CARD_REQ);
+//                Intent intent = new Intent(CircleActivity.this,AddCardActivity.class);
+//                startActivityForResult(intent, CARD_REQ);
+                AddCardActivity.actionStart(CircleActivity.this);
                 window.dismiss();
             }
         });
@@ -140,5 +165,10 @@ public class CircleActivity extends BaseActivity {
             Intent intent=new Intent(context,CircleActivity.class);
             context.startActivity(intent);
         }
-
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        Log.e("stop,","asd");
+        super.onDestroy();
+    }
 }

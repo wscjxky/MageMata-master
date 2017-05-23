@@ -30,11 +30,11 @@ public class SkinSettingManager {
 	public SkinSettingManager(Activity activity, LinearLayout layout) {
 		this.mActivity = activity;	
 		this.mlayout=layout;
-		skinSettingPreference = mActivity.getSharedPreferences(SKIN_PREF, 3);
+		skinSettingPreference = mActivity.getSharedPreferences(SKIN_PREF, 0);
 	}
 	public SkinSettingManager(Activity activity) {
 		this.mActivity = activity;	
-		skinSettingPreference = mActivity.getSharedPreferences(SKIN_PREF, 3);
+		skinSettingPreference = mActivity.getSharedPreferences(SKIN_PREF, 0);
 	}
 	/**
 	 * 获取当前程序的皮肤序号

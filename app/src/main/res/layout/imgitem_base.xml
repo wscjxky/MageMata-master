@@ -43,7 +43,8 @@
             android:layout_marginLeft="12dp"
             android:fontFamily="sans-serif"
             android:scrollHorizontally="true"
-            android:minLines="2"
+            android:minLines="1"
+            android:maxLines="2"
             android:ellipsize="end"
             android:layout_weight="0.97" />
 

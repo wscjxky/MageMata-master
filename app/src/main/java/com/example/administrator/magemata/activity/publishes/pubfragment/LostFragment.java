@@ -115,7 +115,7 @@ public class LostFragment extends Fragment {
         Map<String, Object> listem;
         listems = new ArrayList<Map<String, Object>>();
         listem = new HashMap<String, Object>();
-        listem.put("logo", R.drawable.__leak_canary_icon);
+        listem.put("logo", R.drawable.photo);
         listem.put("title", "校园卡丢了");
         listem.put("content","很急");
         listem.put("time", "2017-04-30 12:00:23");

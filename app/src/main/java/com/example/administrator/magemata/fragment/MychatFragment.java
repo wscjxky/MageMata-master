@@ -41,15 +41,13 @@ public class MychatFragment extends Fragment implements DialogsListAdapter.OnDia
             = new User("2","我是卖家","http://img.qq745.com/uploads/allimg/141231/1-1412310J544-51.jpg",true);
     public static boolean ADDUSER=false;
 
-
-
     public static final ArrayList<String> IMAGES = new ArrayList<String>() {
         {
             add("http://img.qq745.com/uploads/allimg/141231/1-1412310J545.jpg");
             add("http://img.qq745.com/uploads/allimg/141231/1-1412310J544-51.jpg");
             add("http://p1.qzone.la/Upload/20170428/20170428112456185577.jpg");
             add("http://i.imgur.com/hRShCT3.png");
-            add("http://www.designboom.com/wp-content/uploads/2015/11/stefano-boeri-architetti-vertical-forest-residential-tower-lausanne-switzerland-designboom-01.jpg");
+            add("http://img06.tooopen.com/images/20170514/tooopen_sy_210126153448.jpg");
 
         }
     };
@@ -117,7 +115,7 @@ public class MychatFragment extends Fragment implements DialogsListAdapter.OnDia
         ArrayList<User> users = new ArrayList<User>();
         users.add(SENDER);
         users.add(RECEIVER);
-        Dialog dialog2 = new Dialog("1", "单聊", IMAGES.get(0), users, new Message("1", SENDER, "第一个单聊测试"), 2);
+        Dialog dialog2 = new Dialog("1", "我是小骆", IMAGES.get(0), users, new Message("1", SENDER, "第一个单聊测试"), 2);
         chats.add(dialog2);
         Dialog dialog3 = new Dialog("2", "单聊", IMAGES.get(1), users, new Message("2", RECEIVER, "第一个单聊"), 99);
         chats.add(dialog3);

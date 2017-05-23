@@ -14,10 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
 
 import com.example.administrator.magemata.activity.more.WalletActivity;
 import com.example.administrator.magemata.fragment.CircleFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,8 +31,8 @@ import butterknife.OnClick;
  */
 
 public class AddCardActivity extends AppCompatActivity {
-    private static final int PHOTO_REQUEST_GALLERY = 100 ;
-    private static final int PHOTO_REQUEST_CUT = 200 ;
+    private  int PHOTO_REQUEST_GALLERY = 100 ;
+    private  int PHOTO_REQUEST_CUT = 200 ;
     EditText addcard_content;
     ImageView addimg;
     EditText addcard_coin;
@@ -74,16 +77,18 @@ public class AddCardActivity extends AppCompatActivity {
         String user="第一个用户";
         String content=addcard_content.getText().toString();
         String time="2017-04-30 12:00:23";
-        Intent intent = new Intent();
-        intent.putExtra("user", user);
-        intent.putExtra("content", content);
-        intent.putExtra("time", time);
+//        Intent intent = new Intent();
+//        intent.putExtra("user", user);
+//        intent.putExtra("content", content);
+//        intent.putExtra("time", time);
         addimg.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(addimg.getDrawingCache());
-        intent.putExtra("bitmap", bitmap);
+//        intent.putExtra("bitmap", bitmap);
         addimg.setDrawingCacheEnabled(false);
-        setResult(CircleFragment.CIRCLE_RESULT, intent);
-
+//        setResult(CircleFragment.CIRCLE_RESULT, intent);
+        ImageMessage imageMessage=new ImageMessage();
+        imageMessage.setTitle(user);imageMessage.setContent(content);imageMessage.setBitmap(bitmap);
+        EventBus.getDefault().post(imageMessage);
         showmDialog();
     }
 

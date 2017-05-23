@@ -91,7 +91,7 @@ public class FoundFragment extends Fragment {
         Map<String, Object> listem;
         listems = new ArrayList<Map<String, Object>>();
         listem = new HashMap<String, Object>();
-        listem.put("logo", R.drawable.__leak_canary_icon);
+        listem.put("logo", R.drawable.photo);
         listem.put("title", "校园卡");
         listem.put("content","在某某地方捡到一张校园卡，请联系");
         listem.put("time", "2017-04-30 12:00:23");

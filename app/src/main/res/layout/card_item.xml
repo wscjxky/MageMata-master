@@ -18,6 +18,7 @@
         <TextView style="@style/usertext"
             android:text="我去问哪里出了山河谷哪里有卖，万能的东西，如果女票有点时候会想到"
             android:id="@+id/card_content"
+
             android:padding="8dp" />
 
         <TextView

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,15 @@ import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,9 +83,42 @@ public class MychatActivity extends BaseActivity implements MessageInput.InputLi
     public boolean onSubmit(CharSequence input) {
         messagesAdapter.addToStart(
                 new Message("0", SENDER, input.toString()),true);
-        messagesAdapter.addToStart(
-                new Message("1", OTHER, "测试成功"),true);
+        try {
+            Robot_Get(input.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return true;
+        }
+
         return true;
+    }
+    private void Robot_Get(String content) throws IOException {
+        RequestParams requestParams = new RequestParams("http://api.qingyunke.com/api.php?key=free&appid=0&msg="+content);
+        x.http().get(requestParams, new Callback.CacheCallback<JSONObject>() {
+            @Override
+            public void onSuccess(JSONObject jsonObject) {
+                try {
+                    messagesAdapter.addToStart(
+                            new Message("1", OTHER,jsonObject.getString("content")), true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+            }
+            @Override
+            public void onCancelled(CancelledException cex) {
+            }
+            @Override
+            public void onFinished() {
+            }
+            @Override
+            public boolean onCache(JSONObject result) {
+                return false;
+            }
+        });
     }
 
 
