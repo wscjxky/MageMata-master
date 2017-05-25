@@ -133,10 +133,23 @@ public class MychatActivity extends BaseActivity implements MessageInput.InputLi
         messagesList.setAdapter(messagesAdapter);
         messageInput.setInputListener(this);
         messageInput.setAttachmentsListener(this);
+        EditText editText=messageInput.getInputEditText();
+        //让EditText失去焦点，然后获取点击事件
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("获取","点击");
+                if (emojiFrameLayout.getVisibility() == View.VISIBLE) {
+                    setEmojiViewHeight(0);
+                    KeyBoardUtil.openKeyboard(messageInput, MychatActivity.this);
+                }
+            }
+        });
 //        super.messagesAdapter.enableSelectionMode(this);
 //        super.messagesAdapter.setLoadMoreListener(this);
 
     }
+
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, MychatActivity.class);
@@ -181,6 +194,7 @@ public class MychatActivity extends BaseActivity implements MessageInput.InputLi
             }
         });
     }
+
     private void showPop(){
         int softHeight = KeyBoardUtil.getSoftBoardHeight(this);
         //当前没有显示软键盘

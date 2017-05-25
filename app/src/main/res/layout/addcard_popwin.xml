@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   >
 
     <Button
-        android:text="发布悬赏"
+        android:text="发布链接"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.30" />
+        android:id="@+id/addcard_addlink"
+        android:layout_row="1"
+        android:layout_column="1" />
 
     <Button
         android:text="发布悬赏"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addcard_reward"
-        android:layout_weight="0.30"
-        android:padding="30dp" />
+        android:layout_row="2"
+        android:layout_column="1" />
 
     <Button
-        android:text="Button"
+        android:text="发布图片"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button6"
-        android:layout_weight="0.32" />
-</LinearLayout>
+        android:id="@+id/addcard_addimage"
+        android:layout_row="3"
+        android:layout_column="1" />
+
+    <Button
+        android:text="发布文字"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:id="@+id/addcard_addtext"
+        android:layout_row="4"
+        android:layout_column="1" />
+
+    <Button
+        android:text="发布视频"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addcard_addvideo"
+        android:layout_weight="0.32"
+        android:layout_row="0"
+        android:layout_column="1" />
+
+
+</GridLayout>

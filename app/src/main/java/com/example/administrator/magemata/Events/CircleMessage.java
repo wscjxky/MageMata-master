@@ -2,11 +2,13 @@ package com.example.administrator.magemata.Events;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/5/23.
  */
 
-public class CircleMessage {
+public class CircleMessage   {
     private String user;
     private String title;
     private String content;

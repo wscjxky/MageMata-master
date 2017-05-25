@@ -1,23 +1,38 @@
-package com.example.administrator.magemata.activity;
+package com.example.administrator.magemata.activity.circle;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.VideoView;
 
+import com.example.administrator.magemata.Events.CardMessage;
+import com.example.administrator.magemata.Events.CircleMessage;
 import com.example.administrator.magemata.R;
-import com.example.administrator.magemata.activity.publishes.base.AddItemBase;
+import com.example.administrator.magemata.activity.BaseActivity;
+import com.example.administrator.magemata.activity.MychatActivity;
 import com.example.administrator.magemata.adapter.SkinSettingManager;
 import com.example.administrator.magemata.fragment.MychatFragment;
+import com.example.administrator.magemata.model.Message;
 
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,25 +48,58 @@ import butterknife.OnClick;
 
 public class CardActivity  extends BaseActivity {
     private static  int COMCOUNT = 0;
-    @BindView(R.id.card_et_comment)
+    @ViewInject(R.id.card_et_comment)
     EditText comment;
-    @BindView(R.id.card_lv_comment)
+    @ViewInject(R.id.card_lv_comment)
     ListView commentlv;
-    @BindView(R.id.card_tv_count)
+    @ViewInject(R.id.card_tv_count)
     TextView commentcount;
+    @ViewInject(R.id.card_item_image)
+    ImageView imageView;
+    @ViewInject(R.id.card_vv_video)
+    VideoView videoView;
+    @ViewInject(R.id.card_tv_content)
+    TextView tv_content;
+    @ViewInject(R.id.card_tv_type)
+    TextView tv_type;
+
+
     private SimpleAdapter simplead;
     private List<Map<String, Object>> listems=new ArrayList<Map<String, Object>>();;
     private Map<String, Object> listem;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
-        ButterKnife.bind(this);
+        x.view().inject(this);
+        initCardContent();
         setAdapter();
     }
-    @OnClick(R.id.card_bt_comment)
-    public void addComment(){
+    private void initCardContent(){
+        String type = getIntent().getStringExtra("type");
+        if(type!=null) {
+            String content = getIntent().getStringExtra("content");
+            Uri uri=getIntent().getParcelableExtra("uri");
+            Bitmap bitmap = getIntent().getParcelableExtra("bitmap");
+            tv_content.setText(content);
+            tv_type.setText(type);
+            videoView.setVisibility(View.VISIBLE);
+
+            if (bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            }
+            if(uri!=null) {
+                Log.e("sdf",uri.toString());
+                videoView.setMediaController(new MediaController(this));
+                videoView.setVideoURI(uri);
+                videoView.start();
+            }
+        }
+    }
+
+
+    @Event(value = R.id.card_bt_comment ,type=View.OnClickListener.class)
+    private void addComment(View view){
         String ct=comment.getText().toString();
         listem = new HashMap<String, Object>();
         listem.put("user","第二个用户");
@@ -67,12 +115,16 @@ public class CardActivity  extends BaseActivity {
     private void setAdapter(){
         simplead = new SimpleAdapter(CardActivity.this, listems,
                 R.layout.card_item, new String[]{"user", "comment", "time"},
-                new int[]{R.id.card_user, R.id.card_content, R.id.card_time});
+                new int[]{R.id.card_user, R.id.card_tv_content, R.id.card_time});
         commentlv.setAdapter(simplead);
     }
 
-    static public void actionStart(Context context){
+    static public void actionStart(Context context , @Nullable String type,@Nullable String content,@Nullable Bitmap bitmap,@Nullable Uri uri){
         Intent intent=new Intent(context,CardActivity.class);
+        intent.putExtra("type",type);
+        intent.putExtra("bitmap",bitmap);
+        intent.putExtra("uri",uri);
+        intent.putExtra("content",content);
         context.startActivity(intent);
     }
     @Override
@@ -91,11 +143,5 @@ public class CardActivity  extends BaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SkinSettingManager mSettingManager = new SkinSettingManager(this);
-        mSettingManager.initSkins();
     }
 }

@@ -22,6 +22,8 @@ import com.example.administrator.magemata.util.Permission;
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
 
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,17 +37,17 @@ import rx.schedulers.Schedulers;
  */
 
 public class MainActivity extends BaseActivity {
-    @BindView(R2.id.tabs)
-    AdvancedPagerSlidingTabStrip tabs;
-    @BindView(R2.id.viewpager)
-    ViewPager pager;
+    @ViewInject(R2.id.tabs)
+    private AdvancedPagerSlidingTabStrip tabs;
+    @ViewInject(R2.id.viewpager)
+    private ViewPager pager;
     private PagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        x.view().inject(this);
 
-        ButterKnife.bind(this);
         Permission.requestPermission(MainActivity.this);
 //        useRxjava();
         adapter = new MainAdapter(getSupportFragmentManager());
@@ -63,6 +65,7 @@ public class MainActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.share_menu, menu);
         return true;
     }
+
 
     private void  useRxjava() {
         Observable.create(new Observable.OnSubscribe<MainAdapter>() {

@@ -15,10 +15,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.administrator.magemata.Events.CircleMessage;
-import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
-import com.example.administrator.magemata.activity.AddCircleActivity;
-import com.example.administrator.magemata.activity.CircleActivity;
+import com.example.administrator.magemata.activity.circle.AddCircleActivity;
+import com.example.administrator.magemata.activity.circle.CircleActivity;
 import com.example.administrator.magemata.constant.Constant;
 
 import org.greenrobot.eventbus.EventBus;

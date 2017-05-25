@@ -33,7 +33,7 @@ public class JoinGoodActivity extends PublishBase {
     public void onMessageEvent(ImageMessage event) {
         String title = event.getTitle();
         String content = event.getContent();
-        Bitmap logo = event.getBitmp();
+        Bitmap logo = event.getBitmap();
         String time = Constant.TIME;
         Map<String, Object> listem = new HashMap<String, Object>();
         listem.put("logo", logo);

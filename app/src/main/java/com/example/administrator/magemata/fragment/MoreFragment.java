@@ -95,7 +95,7 @@ public class MoreFragment extends Fragment {
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ImageMessage event) {
-        Bitmap logo = event.getBitmp();
+        Bitmap logo = event.getBitmap();
         imageView.setImageBitmap(logo);
     };
 

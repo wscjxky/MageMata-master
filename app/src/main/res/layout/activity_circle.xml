@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="93dp"
         app:srcCompat="@drawable/photo"
-        android:id="@+id/card_img" />
+        android:id="@+id/circle_topimg" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:padding="20dp"
-        android:id="@+id/cards_lv"
-        android:layout_below="@+id/card_img"
+        android:id="@+id/circe_lv_content"
+        android:layout_below="@+id/circle_topimg"
         android:divider="#00000000"
         android:dividerHeight="9dp">
 
@@ -24,7 +24,7 @@
 
     <ImageButton
         android:background="@drawable/btn_add"
-        android:id="@+id/card_add"
+        android:id="@+id/circe_btn_addcircle"
         android:layout_marginRight="29dp"
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="30dp"

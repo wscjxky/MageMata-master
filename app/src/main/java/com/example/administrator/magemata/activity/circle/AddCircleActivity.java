@@ -1,23 +1,32 @@
-package com.example.administrator.magemata.activity;
+package com.example.administrator.magemata.activity.circle;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.example.administrator.magemata.Events.CircleMessage;
 import com.example.administrator.magemata.Events.ImageMessage;
 import com.example.administrator.magemata.R;
+import com.example.administrator.magemata.activity.BaseActivity;
 import com.example.administrator.magemata.fragment.CircleFragment;
 
 import org.greenrobot.eventbus.EventBus;
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,35 +36,35 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/27.
  */
 
-public class AddCircleActivity extends BaseActivity{
-    private static final int PHOTO_REQUEST_GALLERY = 100 ;
-    private static final int PHOTO_REQUEST_CUT = 200 ;
+public class AddCircleActivity extends BaseActivity {
+    private   int PHOTO_REQUEST_GALLERY = 100 ;
+    private   int PHOTO_REQUEST_CUT = 200 ;
     private Activity activity;
-    @BindView(R.id.addcircle_addimg)
-    ImageView addimg;
-    @BindView(R.id.addcircle_ciclename)
-    EditText et_ciclename;
-    @BindView(R.id.addcircle_phone)
-    EditText et_phone;
-    @BindView(R.id.addcircle_username)
-    EditText et_username;
-
+    @ViewInject(R.id.addcircle_ciclename)
+     EditText et_ciclename;
+    @ViewInject(R.id.addcircle_username)
+      EditText et_username;
+    @ViewInject(R.id.addcircle_addimg)
+      ImageView addimg;
+    @ViewInject(R.id.addcircle_phone)
+       EditText et_phone;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcircle);
-        ButterKnife.bind(this);
+        x.view().inject(this);
     }
 
-    @OnClick(R.id.addcircle_addimg)
-    public void addImg(){
+
+    @Event(value = R.id.addcircle_addimg ,type=View.OnClickListener.class)
+    private void addImg(View view){
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
     }
 
-    @OnClick(R.id.addcircle_submit)
-    public void submit(){
+    @Event(value = R.id.addcircle_submit ,type=View.OnClickListener.class)
+    private void submit(View view){
         String ciclename = et_ciclename.getText().toString();
         String phone = et_phone.getText().toString();
         String username = et_username.getText().toString();

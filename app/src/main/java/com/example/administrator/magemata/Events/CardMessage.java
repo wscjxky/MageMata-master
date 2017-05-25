@@ -1,19 +1,30 @@
 package com.example.administrator.magemata.Events;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
+
+import java.io.Serializable;
 
 /**
- * Created by Administrator on 2017/5/14.
+ * Created by Administrator on 2017/5/25.
  */
 
-public class ImageMessage {
+public class CardMessage   {
     private String user;
     private String title;
     private String content;
-    private String price;
+    private String coin;
     private String time;
+
     private Bitmap bitmap=null;
     private String type;
+    private Uri video=null;
+    public void setVideo(Uri video){
+        this.video = video;
+    }
+    public Uri getVideo(){
+        return video;
+    }
     public void setContent(String cont){
         content = cont;
     }
@@ -38,10 +49,21 @@ public class ImageMessage {
     public boolean hasBitmap(){
         return bitmap != null;
     }
+    public boolean hasVideo(){
+        return video != null;
+    }
     public String getType(){
         return this.type;
     }
     public void setType(String type){
         this.type=type;
     }
+
+    public void setCoin(String coin) {
+        this.coin = coin;
+    }
+    public String getCoin(){
+        return this.coin;
+    }
+
 }

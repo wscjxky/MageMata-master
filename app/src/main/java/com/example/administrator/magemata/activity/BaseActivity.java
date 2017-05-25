@@ -1,9 +1,13 @@
 package com.example.administrator.magemata.activity;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.adapter.SkinSettingManager;
+
+import org.xutils.x;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,5 +23,6 @@ public class BaseActivity extends AppCompatActivity {
         SkinSettingManager mSettingManager = new SkinSettingManager(this);
         mSettingManager.initSkins();
     }
+
 
 }

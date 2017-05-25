@@ -48,8 +48,6 @@
         android:layout_alignBottom="@+id/circles_iv"
         android:layout_alignLeft="@+id/card_user"
         android:layout_alignStart="@+id/card_user"
-        android:maxLines="1"
-        android:ellipsize="end"
         android:scrollHorizontally="true"
     />
 
