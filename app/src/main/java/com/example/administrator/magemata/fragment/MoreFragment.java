@@ -15,6 +15,7 @@ import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.more.ChangeSkinActivity;
 import com.example.administrator.magemata.activity.more.MoreDetailActivity;
 import com.example.administrator.magemata.activity.more.OtherActivity;
+import com.example.administrator.magemata.activity.more.UserInfoActivity;
 import com.example.administrator.magemata.activity.more.WalletActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -71,7 +72,8 @@ public class MoreFragment extends Fragment {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChangeSkinActivity.actionStart(activity);
+//                ChangeSkinActivity.actionStart(activity);
+                UserInfoActivity.actionStart(activity);
             }
         });
         mview.findViewById(R.id.more_linel_otherinfo).setOnClickListener(new View.OnClickListener() {

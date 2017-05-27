@@ -40,7 +40,7 @@
         android:layout_toEndOf="@+id/circles_iv" />
 
     <TextView
-        android:text="作业帮"
+        android:text="作业帮content"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/circles_content"
@@ -49,6 +49,8 @@
         android:layout_alignLeft="@+id/card_user"
         android:layout_alignStart="@+id/card_user"
         android:scrollHorizontally="true"
+        android:maxLines="1"
+        android:ellipsize="end"
     />
 
     <ImageView

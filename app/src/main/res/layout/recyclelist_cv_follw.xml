@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    android:layout_marginBottom="1dp"
+    >
+
+    <ImageView
+        android:id="@+id/follow_item_portrait"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="14dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/follow_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="蓝影态"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            />
+
+        <TextView
+            android:id="@+id/follow_item_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="大一新生"
+            />
+        <TextView
+            android:id="@+id/follow_item_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="一个软萌妹子"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/follow_item_moreimage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:layout_marginRight="27dp"
+        android:src="@mipmap/drag_icon"/>
+
+
+</LinearLayout>

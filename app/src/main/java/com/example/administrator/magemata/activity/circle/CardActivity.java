@@ -83,12 +83,12 @@ public class CardActivity  extends BaseActivity {
             Bitmap bitmap = getIntent().getParcelableExtra("bitmap");
             tv_content.setText(content);
             tv_type.setText(type);
-            videoView.setVisibility(View.VISIBLE);
 
             if (bitmap != null) {
                 imageView.setImageBitmap(bitmap);
             }
             if(uri!=null) {
+                videoView.setVisibility(View.VISIBLE);
                 Log.e("sdf",uri.toString());
                 videoView.setMediaController(new MediaController(this));
                 videoView.setVideoURI(uri);

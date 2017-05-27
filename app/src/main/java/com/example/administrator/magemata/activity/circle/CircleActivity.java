@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.administrator.magemata.Events.CardMessage;
+import com.example.administrator.magemata.Interface.NoScrollListView;
 import com.example.administrator.magemata.R;
 import com.example.administrator.magemata.activity.BaseActivity;
 import com.example.administrator.magemata.constant.Constant;
@@ -54,15 +56,18 @@ public class CircleActivity extends BaseActivity {
     private List<Map<String, Object>> listems;
     private SimpleAdapter simplead;
     private Map<String, Object> listem;
-    @ViewInject(R.id.circe_lv_content)
-    private ListView cards_lv;
+    @ViewInject(R.id.circle_lv_content)
+    private NoScrollListView cards_lv;
     @ViewInject(R.id.circle_topimg)
     private ImageView card_topimg;
-    @ViewInject(R.id.circe_btn_addcircle)
+    @ViewInject(R.id.circle_btn_addcircle)
     private ImageButton card_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_circle);
         x.view().inject(this);
         if (!EventBus.getDefault().isRegistered(this)) {
@@ -102,10 +107,12 @@ public class CircleActivity extends BaseActivity {
     private void setAdapter() {
         String content="我去问哪里出了山河谷哪里有卖，万能的东西，如果女票有点时候会想到苏打粉蔷薇";
         listems = new ArrayList<Map<String, Object>>();
-        listem = new HashMap<String, Object>();
-        listem.put("type", "文字");
-        listem.put("content", content);
-        listems.add(listem);
+        for(int i=0;i<5;i++) {
+            listem = new HashMap<String, Object>();
+            listem.put("type", "文字");
+            listem.put("content", content);
+            listems.add(listem);
+        }
         simplead = new SimpleAdapter(CircleActivity.this, listems,
                 R.layout.card_item, new String[]{"type", "content","bitmap","coin"},
                 new int[]{R.id.card_tv_type, R.id.card_tv_content,R.id.card_item_image,R.id.card_tv_coin}
@@ -140,7 +147,7 @@ public class CircleActivity extends BaseActivity {
     }
 
 
-    @Event(value = R.id.circe_btn_addcircle ,type=View.OnClickListener.class)
+    @Event(value = R.id.circle_btn_addcircle ,type=View.OnClickListener.class)
     private void showPopwindow(View mview) {
         // 利用laymoutInflater获得View
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

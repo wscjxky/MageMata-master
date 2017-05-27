@@ -63,7 +63,11 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.more.OtherActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".activity.more.UserInfoActivity"
+            android:theme="@style/NoActionBarTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.more.ChangInfoActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
